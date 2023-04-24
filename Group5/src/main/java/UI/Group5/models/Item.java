@@ -17,8 +17,8 @@ public class Item {
     @Column(name = "price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "category", nullable = false)
-    private String category;
+    @Column(name = "description", nullable = false)
+    private String description;
 
     public Long getId() {
         return id;
@@ -40,12 +40,12 @@ public class Item {
         this.price = price;
     }
 
-    public String getCategory() {
-        return category;
+    public String getDescription() {
+        return description;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setDescription(String category) {
+        this.description = category;
     }
 }
 

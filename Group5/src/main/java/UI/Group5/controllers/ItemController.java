@@ -36,7 +36,7 @@ public class ItemController {
                 .map(item -> {
                     item.setName((newItem.getName()));
                     item.setPrice((newItem.getPrice()));
-                    item.setCategory((newItem.getCategory()));
+                    item.setDescription((newItem.getDescription()));
                     return itemRepository.save(item);
                 });
     }

@@ -20,6 +20,9 @@ public class Item {
     @Column(name = "description", nullable = false)
     private String description;
 
+    @Column(name = "category", nullable = false)
+    private String category;
+
     public Long getId() {
         return id;
     }
@@ -46,6 +49,14 @@ public class Item {
 
     public void setDescription(String category) {
         this.description = category;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
 

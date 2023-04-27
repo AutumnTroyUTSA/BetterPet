@@ -8,16 +8,13 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Products from '../json/dogProducts.json'
+import Products from "../json/smallProducts.json";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-const Dog = () => {
+const Cart = () => {
   return (
     <>
-   
-      <Typography style={{ float: "left" }}>Dog Products:</Typography>
-      <main>
+      <Typography style={{ float: "left" }}>Shopping Cart:</Typography>
+       <main>
         {/* Hero unit */}
         <Box
           sx={{
@@ -26,7 +23,7 @@ const Dog = () => {
             pb: 6,
           }}
         ></Box>
-        <Container maxWidth="xl">
+        <Container maxWidth="md">
           {/* End hero unit */}
           <Grid container spacing={8}>
             {Products.map((card) => (
@@ -48,19 +45,16 @@ const Dog = () => {
                     image={card.picture}
                     alt="random"
                   />
-                  <CardContent sx={{ flexGrow: 1 }}>
-                    <Typography gutterBottom variant="h5" component="h2">
+                  <CardContent sx={{ flexGrow: 1}}>
+                    <Typography  variant="h5" component="h2">
                       {card.name}
                     </Typography>
-                    <Typography>
-                      {card.desc}
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="h2" sx={{position:'absolute',bottom:20, right:80}}>
+                    <Typography variant="h8" component="h2" sx={{justifyContent:"center"}}>
                       ${card.price}
                     </Typography>
                   </CardContent>
                   <CardActions sx={{justifyContent:"center"}}>
-                    <Button size="small">Add TO Cart</Button>
+                    <Button size="small">Remove</Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -68,8 +62,9 @@ const Dog = () => {
           </Grid>
         </Container>
       </main>
+      <Button variant="contained" sx={{float:"right", marginRight:10, marginBottom:2}}>Proceed to Checkout</Button>
     </>
   );
 };
 
-export default Dog;
+export default Cart;

@@ -3,15 +3,12 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import QuiltedImage from "./QuiltedImage";
-import SignIn from "./SignIn";
 import { Outlet, Link } from "react-router-dom";
 
 const pages = ["Dog", "Cat", "Small_Pet", "Account", "Cart"];

@@ -7,6 +7,8 @@ import Cat from "./components/Cat";
 import Header from './components/Header';
 import Small_Pet from './components/Small_Pet';
 import Login from './components/Login';
+import Cart from './components/Cart';
+import Checkout from './components/Checkout';
 
 
 const router = createBrowserRouter([
@@ -32,7 +34,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/Cart",
-        element: <p>cart here</p>,
+        element: <Checkout/>,
       },
     ],
   },

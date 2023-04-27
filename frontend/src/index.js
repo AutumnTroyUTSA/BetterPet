@@ -5,6 +5,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Dog from './components/Dog';
 import Cat from "./components/Cat";
 import Header from './components/Header';
+import Small_Pet from './components/Small_Pet';
+import Login from './components/Login';
 
 
 const router = createBrowserRouter([
@@ -22,11 +24,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/Small_Pet",
-        element: <p>small pets here</p>,
+        element: <Small_Pet/>,
       },
       {
         path: "/Account",
-        element: <p>Account here</p>,
+        element: <Login/>,
       },
       {
         path: "/Cart",

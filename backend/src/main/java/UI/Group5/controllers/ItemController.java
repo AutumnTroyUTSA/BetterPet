@@ -25,6 +25,9 @@ public class ItemController {
     @GetMapping(value= "/findByName/{name}")
     public List<Item> getName(@PathVariable("name") final String name) {return itemRepository.findByName(name);}
 
+    @GetMapping(value ="/category/{categoryName}")
+    public List<Item> getItemByCategory(@PathVariable("category") final String category) {return itemRepository.findByCategory(category);}
+
     @PostMapping("/add")
     public Item newItem(@RequestBody Item newItem) {
         return itemRepository.save(newItem);
@@ -37,6 +40,7 @@ public class ItemController {
                     item.setName((newItem.getName()));
                     item.setPrice((newItem.getPrice()));
                     item.setDescription((newItem.getDescription()));
+                    item.setCategory((newItem.getCategory()));
                     return itemRepository.save(item);
                 });
     }

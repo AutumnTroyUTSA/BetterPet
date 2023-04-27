@@ -22,7 +22,7 @@ import Products from "../json/catProducts.json";
 const Cat = () => {
   return (
     <>
-      <Header />
+   
       <Typography style={{ float: "left" }}>Cat Products:</Typography>
       <main>
         {/* Hero unit */}

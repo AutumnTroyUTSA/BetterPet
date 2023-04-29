@@ -25,16 +25,16 @@ const router = createBrowserRouter([
         element: <Cat />,
       },
       {
-        path: "/Small_Pet",
-        element: <Small_Pet/>,
+        path: "Small_Pet",
+        element: <Small_Pet />,
       },
       {
-        path: "/Account",
-        element: <Login/>,
+        path: "Account",
+        element: <Login />,
       },
       {
-        path: "/Cart",
-        element: <Checkout/>,
+        path: "Cart",
+        element: <Checkout />,
       },
     ],
   },

@@ -21,9 +21,22 @@ const Checkout = () => {
           pb: 6,
         }}
       ></Box>
-      <Container maxWidth="xl">
-        <Typography >Checkout:</Typography>
-      </Container>
+      <br />
+      <br />
+      <br />
+      <br />
+      <Typography sx={{ textAlign: "center" }}>Item Total: $</Typography>
+      <Typography sx={{ textAlign: "center" }}>Order Tax: $</Typography>
+      <br />
+      <Typography sx={{ textAlign: "center" }}>Order Total: $</Typography>
+      <br />
+      <br />
+      <Button
+        variant="contained"
+        sx={{ float: "right", marginRight: 15, marginBottom: 2 }}
+      >
+        Finish & Pay
+      </Button>
     </>
   );
 };

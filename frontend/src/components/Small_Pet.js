@@ -8,15 +8,12 @@ import Grid from "@mui/material/Grid";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
-import Products from '../json/dogProducts.json'
+import Products from "../json/smallProducts.json";
 
-const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-
-const Dog = () => {
+const Small_Pet = () => {
   return (
     <>
-   
-      <Typography style={{ float: "left" }}>Dog Products:</Typography>
+      <Typography style={{ float: "left" }}>Small Pet Products:</Typography>
       <main>
         {/* Hero unit */}
         <Box
@@ -36,7 +33,6 @@ const Dog = () => {
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    position:'relative',
                   }}
                 >
                   <CardMedia
@@ -52,15 +48,14 @@ const Dog = () => {
                     <Typography gutterBottom variant="h5" component="h2">
                       {card.name}
                     </Typography>
-                    <Typography>
-                      {card.desc}
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="h2" sx={{position:'absolute',bottom:20, right:80}}>
-                      ${card.price}
+                    <Typography>{card.desc}</Typography>
+                    <Typography gutterBottom variant="h8" component="h2">
+                      {card.price}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{justifyContent:"center"}}>
-                    <Button size="small">Add TO Cart</Button>
+                  <CardActions>
+                    <Button size="small">View</Button>
+                    <Button size="small">Edit</Button>
                   </CardActions>
                 </Card>
               </Grid>
@@ -72,4 +67,4 @@ const Dog = () => {
   );
 };
 
-export default Dog;
+export default Small_Pet;

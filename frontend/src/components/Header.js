@@ -3,17 +3,15 @@ import { styled, alpha } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
 import QuiltedImage from "./QuiltedImage";
-import SignIn from "./SignIn";
+import { Outlet, Link } from "react-router-dom";
 
-const pages = ["Dogs", "Cats", "Small Pets", "Account", "Cart"];
+const pages = ["Dog", "Cat", "Small_Pet", "Account", "Cart"];
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -58,44 +56,49 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 export default function Header() {
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
-        <Toolbar sx={{justifyContent:"space-around"}}>
-          <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "inherit",
-              textDecoration: "none",
-            }}
-          >
-            LOGO
-          </Typography>
-          {pages.map((page) => (
-            <MenuItem key={page}>
-              <Typography textAlign="center">{page}</Typography>
-            </MenuItem>
-          ))}
-          <Search >
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
-     <QuiltedImage/>
-    </Box>
+    <>
+      <Box sx={{ flexGrow: 1 }}>
+        <AppBar>
+          <Toolbar sx={{ justifyContent: "space-around" }}>
+            <AdbIcon sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: "none", md: "flex" },
+                fontFamily: "monospace",
+                fontWeight: 700,
+                letterSpacing: ".3rem",
+                color: "inherit",
+                textDecoration: "none",
+              }}
+            >
+              LOGO
+            </Typography>
+
+            {pages.map((page) => (
+              <MenuItem key={page}>
+                <Link to={page}>{page}</Link>
+              </MenuItem>
+            ))}
+
+            <Search>
+              <SearchIconWrapper>
+                <SearchIcon />
+              </SearchIconWrapper>
+              <StyledInputBase
+                placeholder="Search…"
+                inputProps={{ "aria-label": "search" }}
+              />
+            </Search>
+          </Toolbar>
+        </AppBar>
+        <QuiltedImage />
+      </Box>
+      <Outlet/>
+    </>
   );
 }

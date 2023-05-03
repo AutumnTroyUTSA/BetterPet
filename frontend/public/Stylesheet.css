@@ -1,13 +1,13 @@
 
 /* header code*/
 h1 {
-  font-size: 24px;
+  font-size: 32px;
   color: #5e4b4e;
   background: #e5e4e4;
   font-family: arial;
    font-style: bold;
   text-transform: uppercase;
-  text-align: center;
+  text-align: left;
 }
 
 h2 {

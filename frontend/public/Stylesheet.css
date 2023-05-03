@@ -1,12 +1,13 @@
 
+/* header code*/
 h1 {
   font-size: 24px;
   color: #5e4b4e;
   background: #e5e4e4;
   font-family: arial;
    font-style: bold;
-  text-transform: lowercase;
-  text-align: left;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 h2 {
@@ -15,10 +16,33 @@ h2 {
   background: #e5e4e4;
   font-family: arial;
    font-style: bold;
-  text-transform: lowercase;
+  text-transform: uppercase;
   text-align: center;
 }
 
+b {
+  color: #a7528e;
+  font-family: arial;
+  font-style: bold;
+  text-transform: uppercase;
+  background: #f6f6f6;
+  text-align: center;
+  font-size: 14px;
+}
+
+body {
+  color: black;
+  font-family: arial;
+  letter-spacing: 2 px;
+  font-size: 12px;
+  font-weight: 300;
+  line-height: 1.65em;
+  margin: 0 auto;
+  max-width: 800px;
+  padding: 40px 10px;  
+}
+
+/* Code for dropdown links*/
 .dropbtn {
   background-color: #dcdfe2;
   color: #382628;

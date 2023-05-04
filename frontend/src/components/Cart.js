@@ -11,6 +11,8 @@ import Container from "@mui/material/Container";
 import Products from "../json/smallProducts.json";
 
 const Cart = () => {
+
+  
   return (
     <>
       <Typography style={{ float: "left" }}>Shopping Cart:</Typography>

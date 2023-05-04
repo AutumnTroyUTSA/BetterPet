@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -9,9 +9,25 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Products from "../json/catProducts.json";
+import axios from "axios";
 
 
 const Cat = () => {
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get("items/category/{Cat}")
+        .then((response) => {
+          setPosts(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
+
+
   return (
     <>
    
@@ -28,7 +44,7 @@ const Cat = () => {
         <Container maxWidth="xl">
           {/* End hero unit */}
           <Grid container spacing={8}>
-            {Products.map((card) => (
+            {posts.map((card) => (
               <Grid item key={card} xs={12} sm={6} md={3}>
                 <Card
                   sx={{

@@ -1,4 +1,4 @@
-import * as React from "react";
+import { useState, useEffect } from "react";
 import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
@@ -9,10 +9,26 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import Products from '../json/dogProducts.json'
+import axios from "axios";
+
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 const Dog = () => {
+
+    const [posts, setPosts] = useState([]);
+
+    useEffect(() => {
+      axios
+        .get("items/category/{Dog}")
+        .then((response) => {
+          setPosts(response.data);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+    }, []);
+
   return (
     <>
    
@@ -29,8 +45,8 @@ const Dog = () => {
         <Container maxWidth="xl">
           {/* End hero unit */}
           <Grid container spacing={8}>
-            {Products.map((card) => (
-              <Grid item key={card} xs={12} sm={6} md={3}>
+            {posts.map((item) => (
+              <Grid item key={item.id} xs={12} sm={6} md={3}>
                 <Card
                   sx={{
                     height: "100%",
@@ -45,18 +61,18 @@ const Dog = () => {
                       // 16:9
                       pt: "6.25%",
                     }}
-                    image={card.picture}
+                    image={item.picture}
                     alt="random"
                   />
                   <CardContent sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom variant="h5" component="h2">
-                      {card.name}
+                      {item.name}
                     </Typography>
                     <Typography>
-                      {card.desc}
+                      {item.desc}
                     </Typography>
                     <Typography gutterBottom variant="h8" component="h2" sx={{position:'absolute',bottom:20, right:80}}>
-                      ${card.price}
+                      ${item.price}
                     </Typography>
                   </CardContent>
                   <CardActions sx={{justifyContent:"center"}}>

@@ -23,8 +23,8 @@ public class Item {
     @Column(name = "category", nullable = false)
     private String category;
 
-    @Column(name = "imagePath", nullable = false)
-    private String imagePath;
+    //@Column(name = "imagePath", nullable = false)
+    //private String imagePath;
 
     public Long getId() {
         return id;
@@ -62,8 +62,8 @@ public class Item {
         this.category = category;
     }
 
-    public String getImagePath() { return imagePath; }
+    //public String getImagePath() { return imagePath; }
 
-    public void setImagePath(String imagePath) { this.imagePath = imagePath; }
+    //public void setImagePath(String imagePath) { this.imagePath = imagePath; }
 }
 

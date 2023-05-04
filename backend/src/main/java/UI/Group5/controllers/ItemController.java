@@ -5,6 +5,7 @@ import UI.Group5.repo.ItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.swing.text.html.Option;
 import java.util.List;
 import java.util.Optional;
 
@@ -21,6 +22,9 @@ public class ItemController {
 
     @GetMapping(value = "/all")
     public List<Item> getItems() {return itemRepository.findAll();}
+
+    @GetMapping(value = "/{id}")
+    public Optional<Item> getByItemID(@PathVariable("id") final Long id) {return itemRepository.findById(id);}
 
     @GetMapping(value= "/findByName/{name}")
     public List<Item> getName(@PathVariable("name") final String name) {return itemRepository.findByName(name);}

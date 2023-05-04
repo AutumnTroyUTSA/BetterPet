@@ -34,6 +34,10 @@ public class CartController {
                     return cartRepository.save(cart);
                 });
     }
+    @GetMapping(value = "/{customer_id}")
+    public List<Cart> getCartByCustomerId(@PathVariable Long customer_id) {
+        return cartRepository.findByCustomerId(customer_id);
+    }
 
 
 

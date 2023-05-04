@@ -45,6 +45,7 @@ public class ItemController {
                     item.setPrice((newItem.getPrice()));
                     item.setDescription((newItem.getDescription()));
                     item.setCategory((newItem.getCategory()));
+                    item.setImagePath((newItem.getImagePath()));
                     return itemRepository.save(item);
                 });
     }

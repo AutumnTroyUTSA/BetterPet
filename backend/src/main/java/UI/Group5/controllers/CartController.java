@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/cart")
@@ -18,18 +19,23 @@ public class CartController {
     @Autowired
     private ItemRepository itemRepository;
 
-    @GetMapping({"/addToCart/{itemId}"})
-    public Cart addToCart(@PathVariable(name = "itemId") Long itemId) {
-        Item item = itemRepository.findById(itemId).get();
-
-        Cart cart = new Cart(item);
-        cartRepository.save(cart);
-
-        return cart;
-    }
 
     @GetMapping(value = "/all")
     public List<Cart> getCart() {return cartRepository.findAll();}
+    @PostMapping("/add")
+    public Cart newCart(@RequestBody Cart newCart) {return cartRepository.save(newCart);}
+
+    @PutMapping("/update/{id}")
+    public Optional<Cart> updateCart(@RequestBody Cart newCart, @PathVariable Long id) {
+        return cartRepository.findById(id)
+                .map(cart -> {
+                    cart.setItem(newCart.getItem());
+                    cart.setCustomer(newCart.getCustomer());
+                    return cartRepository.save(cart);
+                });
+    }
+
+
 
 
 }

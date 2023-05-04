@@ -26,7 +26,7 @@ public class ItemController {
     public List<Item> getName(@PathVariable("name") final String name) {return itemRepository.findByName(name);}
 
     @GetMapping(value ="/category/{categoryName}")
-    public List<Item> getItemByCategory(@PathVariable("category") final String category) {return itemRepository.findByCategory(category);}
+    public List<Item> getItemByCategory(@PathVariable("categoryName") final String category) {return itemRepository.findByCategory(category);}
 
     @PostMapping("/add")
     public Item newItem(@RequestBody Item newItem) {

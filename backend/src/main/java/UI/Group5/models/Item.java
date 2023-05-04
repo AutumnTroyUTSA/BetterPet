@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 @Table(name = "Item")
 public class Item {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "name", nullable = false)
@@ -47,8 +47,8 @@ public class Item {
         return description;
     }
 
-    public void setDescription(String category) {
-        this.description = category;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public String getCategory() {

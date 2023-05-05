@@ -17,7 +17,7 @@ const Small_Pet = () => {
 
       useEffect(() => {
         axios
-          .get("items/category/{Other}")
+          .get("items/category/Other")
           .then((response) => {
             setPosts(response.data);
           })

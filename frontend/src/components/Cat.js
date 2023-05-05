@@ -18,7 +18,7 @@ const Cat = () => {
 
     useEffect(() => {
       axios
-        .get("items/category/{Cat}")
+        .get("items/category/Cat")
         .then((response) => {
           setPosts(response.data);
         })

@@ -20,7 +20,7 @@ const Dog = () => {
 
     useEffect(() => {
       axios
-        .get("items/category/{Dog}")
+        .get("items/all")
         .then((response) => {
           setPosts(response.data);
         })
@@ -29,9 +29,14 @@ const Dog = () => {
         });
     }, []);
 
+        async function addCartHandler(event) {
+         
+         await axios.post("cart/addToCart/{event.target.id}").then((response) =>{
+         console.log(response.data)})
+        }
+
   return (
     <>
-   
       <Typography style={{ float: "left" }}>Dog Products:</Typography>
       <main>
         {/* Hero unit */}
@@ -52,7 +57,7 @@ const Dog = () => {
                     height: "100%",
                     display: "flex",
                     flexDirection: "column",
-                    position:'relative',
+                    position: "relative",
                   }}
                 >
                   <CardMedia
@@ -68,15 +73,20 @@ const Dog = () => {
                     <Typography gutterBottom variant="h5" component="h2">
                       {item.name}
                     </Typography>
-                    <Typography>
-                      {item.desc}
-                    </Typography>
-                    <Typography gutterBottom variant="h8" component="h2" sx={{position:'absolute',bottom:20, right:80}}>
+                    <Typography>{item.desc}</Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h8"
+                      component="h2"
+                      sx={{ position: "absolute", bottom: 20, right: 80 }}
+                    >
                       ${item.price}
                     </Typography>
                   </CardContent>
-                  <CardActions sx={{justifyContent:"center"}}>
-                    <Button size="small">Add TO Cart</Button>
+                  <CardActions sx={{ justifyContent: "center" }}>
+                    <Button size="small" id={item.id} onClick={addCartHandler}>
+                      Add TO Cart
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

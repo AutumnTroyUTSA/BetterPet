@@ -15,6 +15,17 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import Divider from "@mui/material/Divider";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogContentText from "@mui/material/DialogContentText";
+import DialogTitle from "@mui/material/DialogTitle";
+import Card from "@mui/material/Card";
+import CardActions from "@mui/material/CardActions";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import Grid from "@mui/material/Grid";
 
 const pages = ["Dog", "Cat", "Small_Pet", "Account", "Cart"];
 
@@ -63,18 +74,29 @@ export default function Header() {
   const [search, setSearch] = useState(false);
   const [products, setProducts] = useState([]);
   const [results, setResults] = useState([]);
+  const [selectedProduct, setSelectedProduct] = useState();
 
   const [searchVal, setSearchVal] = useState("");
 
   const handleInput = (e) => {
-    console.log("handleInput")
     setSearchVal(e.target.value);
     filterResults()
   };
 
-  const handleClearBtn = () => {
-    setSearchVal("");
-  };
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = (e) => {
+      setOpen(true);
+      const arr = e.target.value.split(" ", 3)
+      console.log(arr);
+
+      setSelectedProduct(e.target.value)
+      console.log(selectedProduct)
+    };
+
+    const handleClose = () => {
+      setOpen(false);
+    };
 
 
       useEffect(() => {
@@ -82,7 +104,6 @@ export default function Header() {
           .get("items/all")
           .then((response) => {
             setProducts(response.data);
-            //console.log(products)
           })
           .catch((error) => {
             console.error(error);
@@ -90,10 +111,9 @@ export default function Header() {
       }, []);
 
       async function filterResults() {
-        console.log('filteredResults')
         const searchResults = products.filter((prod)=> prod.name == searchVal)
         if (searchResults.length ){
-          console.log(searchResults)
+
           setResults(searchResults);
           setSearch(true)
         }
@@ -137,7 +157,7 @@ export default function Header() {
               <div className="input-wrap">
                 <i className="fas fa-search"></i>
                 <label for="product-search" id="input-label">
-                  Search: 
+                  Search:
                 </label>
                 <input
                   onChange={handleInput}
@@ -152,9 +172,19 @@ export default function Header() {
                 <ul>
                   {results.map((product) => {
                     return (
-                      <li key={product.id} className="list-item">
-                        <a >{product.name}</a>
-                      </li>
+                      <Button
+                        value={[
+                          product.id + " ",
+                          product.name,
+                          product.description,
+                          product.picture,
+                        ]}
+                        key={product.id}
+                        sx={{ color: "white", backgroundColor: "gray" }}
+                        onClick={handleClickOpen}
+                      >
+                        {product.name}
+                      </Button>
                     );
                   })}
                 </ul>
@@ -163,12 +193,47 @@ export default function Header() {
           </Toolbar>
         </AppBar>
         <QuiltedImage />
-        {setSearch && (
-          <ul>
-            {results.map((el, i) => (
-              <li key={i}>{el.name}</li>
-            ))}
-          </ul>
+        {open && (
+          <Dialog open={open} onClose={handleClose}>
+            <Card
+              sx={{
+                height: "100%",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <CardMedia
+                component="img"
+                sx={{
+                  // 16:9
+                  pt: "6.25%",
+                }}
+                image={selectedProduct.picture}
+                alt="random"
+              />
+              <CardContent sx={{ flexGrow: 1 }}>
+                <Typography gutterBottom variant="h5" component="h2">
+                  Prong Collar
+                </Typography>
+                <Typography>
+                  Training collar for aggressive pulling dogs.
+                </Typography>
+                <Typography
+                  gutterBottom
+                  variant="h8"
+                  component="h2"
+                  style={{ float: "right" }}
+                >
+                  $21
+                </Typography>
+              </CardContent>
+              <CardActions sx={{ justifyContent: "center" }}>
+                <Button size="small" id={selectedProduct.id}>
+                  Add TO Cart
+                </Button>
+              </CardActions>
+            </Card>
+          </Dialog>
         )}
       </Box>
       <Outlet />

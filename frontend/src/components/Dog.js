@@ -20,7 +20,7 @@ const Dog = () => {
 
     useEffect(() => {
       axios
-        .get("items/all")
+        .get("items/category/Dog")
         .then((response) => {
           setPosts(response.data);
         })

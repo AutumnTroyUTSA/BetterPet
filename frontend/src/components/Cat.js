@@ -12,6 +12,7 @@ import Products from "../json/catProducts.json";
 import axios from "axios";
 
 
+
 const Cat = () => {
 
     const [posts, setPosts] = useState([]);
@@ -30,7 +31,6 @@ const Cat = () => {
 
   return (
     <>
-   
       <Typography style={{ float: "left" }}>Cat Products:</Typography>
       <main>
         {/* Hero unit */}
@@ -66,14 +66,20 @@ const Cat = () => {
                     <Typography gutterBottom variant="h5" component="h2">
                       {card.name}
                     </Typography>
-                    <Typography>{card.desc}</Typography>
-                    <Typography gutterBottom variant="h8" component="h2">
-                      {card.price}
+                    <Typography>{card.description}</Typography>
+                    <Typography
+                      gutterBottom
+                      variant="h8"
+                      component="h2"
+                      style={{ float: "right" }}
+                    >
+                      ${card.price}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                  <CardActions sx={{ justifyContent: "center" }}>
+                    <Button size="small" id={card.id} >
+                      Add TO Cart
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

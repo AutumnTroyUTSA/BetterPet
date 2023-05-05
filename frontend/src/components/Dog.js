@@ -73,12 +73,12 @@ const Dog = () => {
                     <Typography gutterBottom variant="h5" component="h2">
                       {item.name}
                     </Typography>
-                    <Typography>{item.desc}</Typography>
+                    <Typography>{item.description}</Typography>
                     <Typography
                       gutterBottom
                       variant="h8"
                       component="h2"
-                      sx={{ position: "absolute", bottom: 20, right: 80 }}
+                      style={{ float: "right"}}
                     >
                       ${item.price}
                     </Typography>

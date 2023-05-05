@@ -1,6 +1,10 @@
 package UI.Group5.models;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.type.SqlTypes;
+
+import java.util.List;
 
 @Entity
 @Table(name = "Cart")
@@ -10,19 +14,34 @@ public class Cart {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @ManyToOne
+    /*@ManyToOne
     @JoinColumn(name = "item_id")
-    private Item item;
+    private Item item;*/
 
-    @ManyToOne
-    private Customer customer;
+    /*@OneToMany
+    private List<Item> cartItems;
+
+    /*@ManyToOne
+    private Customer customer;*/
+
+    /*@ManyToOne
+    @JoinColumn(name = "item_id")
+    private Item item;*/
+
+    /*public List<Item> getCart() {
+        return cartItems;
+    }
+
+    public void setCart(List<Item> cart) {
+        this.cartItems = cartItems;
+    }*/
 
     public Cart() {
 
     }
-    public Cart(Item item) {
+    /*public Cart(Item item) {
         this.item = item;
-    }
+    }*/
 
     public Long getId() {
         return id;
@@ -32,7 +51,7 @@ public class Cart {
         this.id = id;
     }
 
-    public Item getItem() {
+    /*public Item getItem() {
         return item;
     }
 
@@ -46,6 +65,6 @@ public class Cart {
 
     public void setCustomer(Customer customer) {
         this.customer = customer;
-    }
+    }*/
 }
 

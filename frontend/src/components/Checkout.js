@@ -33,7 +33,7 @@ const Checkout = () => {
       useEffect(() => {
         let tempTotal = 0;
         axios
-          .get("items/category/Cat")
+          .get("/cart/showCart")
           .then((response) => {
             response.data.forEach((entry) => {
               tempTotal += entry.price;

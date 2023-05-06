@@ -12,21 +12,25 @@ import Products from "../json/smallProducts.json";
 import axios from "axios";
 
 const Small_Pet = () => {
+  const [posts, setPosts] = useState([]);
 
-      const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("items/category/Small_Animal")
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-      useEffect(() => {
-        axios
-          .get("items/category/Small_Animal")
-          .then((response) => {
-            setPosts(response.data);
-          })
-          .catch((error) => {
-            console.error(error);
-          });
-      }, []);
-
-
+  async function addCartHandler(event) {
+    let id = event.target.id;
+    await axios.get("cart/add/" + id).then((response) => {
+      console.log(response.data);
+    });
+  }
   return (
     <>
       <Typography style={{ float: "left" }}>Small Pet Products:</Typography>
@@ -70,7 +74,7 @@ const Small_Pet = () => {
                     </Typography>
                   </CardContent>
                   <CardActions sx={{ justifyContent: "center" }}>
-                    <Button size="small" >
+                    <Button size="small" onClick={addCartHandler} id={card.id}>
                       Add TO Cart
                     </Button>
                   </CardActions>

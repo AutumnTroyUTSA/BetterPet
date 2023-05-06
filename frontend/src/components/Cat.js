@@ -11,23 +11,26 @@ import Container from "@mui/material/Container";
 import Products from "../json/catProducts.json";
 import axios from "axios";
 
-
-
 const Cat = () => {
+  const [posts, setPosts] = useState([]);
 
-    const [posts, setPosts] = useState([]);
+  useEffect(() => {
+    axios
+      .get("items/category/Cat")
+      .then((response) => {
+        setPosts(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  }, []);
 
-    useEffect(() => {
-      axios
-        .get("items/category/Cat")
-        .then((response) => {
-          setPosts(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    }, []);
-
+  async function addCartHandler(event) {
+    let id = event.target.id;
+    await axios.get("cart/add/" + id).then((response) => {
+      console.log(response.data);
+    });
+  }
 
   return (
     <>
@@ -77,7 +80,7 @@ const Cat = () => {
                     </Typography>
                   </CardContent>
                   <CardActions sx={{ justifyContent: "center" }}>
-                    <Button size="small" id={card.id} >
+                    <Button size="small" onClick={addCartHandler} id={card.id}>
                       Add TO Cart
                     </Button>
                   </CardActions>

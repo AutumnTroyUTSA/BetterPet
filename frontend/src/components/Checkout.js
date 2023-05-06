@@ -39,7 +39,7 @@ const Checkout = () => {
               tempTotal += entry.price;
             });
             setPosts(response.data);
-            setTax(tempTotal * .07)
+            setTax((tempTotal * .07).toFixed(2))
             setTotal(tempTotal)
             setOrder(tempTotal + tax);
             setOrder((tax+tempTotal).toFixed(2))

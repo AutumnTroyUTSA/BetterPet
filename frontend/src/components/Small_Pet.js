@@ -17,7 +17,7 @@ const Small_Pet = () => {
 
       useEffect(() => {
         axios
-          .get("items/category/Other")
+          .get("items/category/Small_Animal")
           .then((response) => {
             setPosts(response.data);
           })
@@ -69,9 +69,10 @@ const Small_Pet = () => {
                       {card.price}
                     </Typography>
                   </CardContent>
-                  <CardActions>
-                    <Button size="small">View</Button>
-                    <Button size="small">Edit</Button>
+                  <CardActions sx={{ justifyContent: "center" }}>
+                    <Button size="small" >
+                      Add TO Cart
+                    </Button>
                   </CardActions>
                 </Card>
               </Grid>

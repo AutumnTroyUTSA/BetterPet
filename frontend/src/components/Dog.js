@@ -30,8 +30,8 @@ const Dog = () => {
     }, []);
 
         async function addCartHandler(event) {
-         
-         await axios.post("cart/addToCart/{event.target.id}").then((response) =>{
+         let id = event.target.id;
+         await axios.post("cart/add/"+id, {id: id, name: event.target.name, price: event.target.price, description: event.target.description, category: event.target.category, imagePath: event.target.imagePath}).then((response) =>{
          console.log(response.data)})
         }
 
